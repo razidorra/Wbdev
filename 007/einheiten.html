@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css Einheiten</title>
+
+    <style>
+      /* verschiedene einheiten um größen zu verstehen */
+
+      .outerbox {
+        width: 600px;
+        background-color: antiquewhite;
+        border: 2px solid red;
+        padding: 2rem;
+      }
+
+      .innerbox {
+        border: 1px solid blue;
+        width: 80%;
+      }
+      /* %wenn wir wollen das passend zu Eltern element size sein sollte */
+
+      main {
+        height: 100vh;
+        background-color: rgb(190, 235, 235);
+      }
+
+      /* standardgröße der rootelements = 16px */
+      /* em wird schnell verwirrend */
+      /* rem ist einfacher zu händeln */
+
+      div {
+        font-size: 1.5em;
+      }
+      h2 {
+        font-size: 2em;
+      }
+      .outerbox h2 {
+        font-size: 2rem;
+      }
+      /* Pixel : das ist starr und verändert sich nicht */
+      .pixel h2 {
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="outerbox">
+        <h2>ich bin ein Überschrift</h2>
+
+        <div class="innerbox">
+          <h2>Ein Überschrift in der Box</h2>
+          <img src="" alt="" />
+        </div>
+      </div>
+
+      <div class="pixel">
+        <h2>in der Pixelbox</h2>
+      </div>
+    </main>
+  </body>
+</html>

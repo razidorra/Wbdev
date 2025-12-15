@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Little Form</title>
+  </head>
+  <body>
+    <h1>Little Form</h1>
+    <form action="https://www.google.com/search" method="get">
+      <!-- name wird genutzt um input-wert zu identifizieren -->
+      <input type="text" name="q" />
+
+      <!-- Lebel zum input hinzufügen, for verweist auf id des input -->
+      <label for="city">Deine Stadt</label>
+      <input type="text" name="city" id="city" />
+
+      <!-- button zum Abschicken type= Submit -->
+      <button type="submit">Abschicken</button>
+      <!-- button zum löschen type= Reset -->
+      <button type="reset">Alles löschen</button>
+    </form>
+  </body>
+</html>

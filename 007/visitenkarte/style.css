@@ -1,0 +1,12 @@
+.card {
+  width: 20rem;
+  padding: 2rem;
+
+  background-color: lightpink;
+  /* Farbcodierung : 
+        rgb(0-255,0-255,0-255 
+        Hex-codierung : 0-f 0-f 0-f 0-f 0-f 0-f...
+        hsl :(Farbton ,Sättigung, Intensität)
+   */
+  box-shadow: rgb(0, 0, 0, 0.35) 0px 5px 15px;
+}

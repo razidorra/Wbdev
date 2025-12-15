@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Baluchistan &mdash; Baluch Culture</title>
+    <meta
+      name="description"
+      content="A tasteful introduction to Baluchistan and Baluch culture: history, people, music, clothing, cuisine, language and more."
+    />
+    <meta name="author" content="Your Name or Organization" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+
+    <!-- Simple, self-contained styles (responsive + accessible) -->
+    <style>
+      :root {
+        --accent: #8b5e3c; /* warm desert brown */
+        --accent-2: #2b6f77; /* cool teal */
+        --muted: #6b7280;
+        --bg: #fffaf6;
+        --card: #ffffff;
+        --radius: 14px;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, var(--bg), #fff);
+        color: #111;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+        padding-bottom: 4rem;
+      }
+
+      /* layout */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .brand {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      .logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+      nav {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+      .nav-link {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+        margin: 0;
+      }
+      .lead {
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+
+      /* cards */
+      .card {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        box-shadow: 0 6px 20px rgba(15, 15, 15, 0.06);
+      }
+
+      /* grid for topic sections */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      /* gallery */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+      .gallery img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+      }
+
+      footer {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+        color: var(--muted);
+      }
+
+      /* responsive */
+      @media (max-width: 900px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        nav {
+          display: none;
+        }
+        .menu-btn {
+          display: inline-flex;
+        }
+      }
+
+      /* small UI */
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(43, 111, 119, 0.08);
+        color: var(--accent-2);
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .section-title h3 {
+        margin: 0;
+      }
+      .cta {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 10px;
+        background: var(--accent-2);
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      /* modal for images */
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 60;
+      }
+      .modal.open {
+        display: flex;
+      }
+      .modal img {
+        max-width: 92%;
+        max-height: 86%;
+        border-radius: 12px;
+      }
+
+      /* accessible focus */
+      a:focus {
+        outline: 3px solid rgba(139, 94, 60, 0.15);
+        outline-offset: 3px;
+      }
+      button {
+        font: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="top">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">B</div>
+          <div>
+            <div style="font-weight: 800">Baluchistan</div>
+            <div class="muted" style="font-size: 0.85rem">
+              Baluch Culture & Traditions
+            </div>
+          </div>
+        </div>
+
+        <nav aria-label="Main navigation">
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#culture">Culture</a>
+          <a class="nav-link" href="#gallery">Gallery</a>
+          <a class="nav-link" href="#resources">Resources</a>
+        </nav>
+
+        <button
+          class="menu-btn card"
+          onclick="document.getElementById('navMobile').classList.toggle('hidden')"
+          aria-expanded="false"
+          style="display: none"
+        >
+          Menu
+        </button>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-grid">
+            <div class="card">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  gap: 1rem;
+                "
+              >
+                <div>
+                  <div class="pill">Region & Culture</div>
+                  <h1>Baluchistan — land, people, and living traditions</h1>
+                  <p class="lead">
+                    Explore the landscapes, languages, music, textiles and
+                    everyday life of the Baluch people from a respectful,
+                    culturally-aware perspective.
+                  </p>
+                  <p style="margin-top: 1rem">
+                    <a href="#culture" class="cta">Discover Baluch Culture</a>
+                  </p>
+                </div>
+                <div class="muted" style="max-width: 240px; font-size: 0.95rem">
+                  This site is an introductory, educational resource. If you'd
+                  like to contribute corrections, sources or photos, please use
+                  the contact section below.
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="card">
+                <div class="section-title"><h3>Quick facts</h3></div>
+                <ul class="muted" style="margin-top: 0.5rem">
+                  <li>
+                    <strong>Location:</strong> Southeastern Iran, southwestern
+                    Pakistan, and parts of Afghanistan.
+                  </li>
+                  <li>
+                    <strong>People:</strong> Baluch (Baloch) — diverse tribes
+                    and communities.
+                  </li>
+                  <li>
+                    <strong>Languages:</strong> Balochi, Brahui, Pashto, Persian
+                    and regional tongues.
+                  </li>
+                  <li>
+                    <strong>Economy:</strong> pastoralism, crafts, agriculture,
+                    trade.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <div class="section-title">
+                  <h3>Featured: Traditional Dress</h3>
+                </div>
+                <p class="muted" style="margin-top: 0.5rem">
+                  Baluch clothing is known for rich embroidery, distinctive
+                  patterns and practical design suited to arid landscapes. Women
+                  often wear long embroidered dresses and large head coverings;
+                  men wear long shirts, loose trousers and turbans in many
+                  areas.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" style="margin-top: 1.5rem">
+          <div class="card">
+            <div class="section-title"><h3>About Baluchistan</h3></div>
+            <p class="muted" style="margin-top: 0.5rem">
+              Baluchistan refers to a geographic and cultural region
+              traditionally inhabited by the Baluch people. It spans modern
+              political borders and features dramatic landscapes: deserts,
+              mountain ranges and a long coastline along the Arabian Sea. The
+              region has a long history of trade, migration and cultural
+              exchange.
+            </p>
+
+            <div class="grid-2">
+              <div>
+                <h4>History & heritage</h4>
+                <p class="muted">
+                  Archaeological evidence and centuries of oral histories show
+                  Baluchistan as a crossroads between South and Central Asia.
+                  Local tribal structures and customary law have historically
+                  shaped social life alongside Islamic and regional influences.
+                </p>
+              </div>
+              <div>
+                <h4>Environment</h4>
+                <p class="muted">
+                  From coastal mangroves and fishing communities to highland
+                  pastures and arid plateaus, Baluchistan's environment deeply
+                  influences livelihoods and cultural practices.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="culture" style="margin-top: 1.25rem">
+          <div class="section-title"><h3>Baluch Culture — an overview</h3></div>
+
+          <div class="grid-3">
+            <div class="card">
+              <h4>Language</h4>
+              <p class="muted">
+                Balochi is the principal language for many Baluch communities.
+                Several dialects exist; other languages such as Brahui and
+                regional versions of Persian and Pashto are also present.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Music & Poetry</h4>
+              <p class="muted">
+                Music and oral poetry are central — ballads and heroic tales are
+                often accompanied by instruments like the tambur (long-necked
+                lute), benju and various percussion. Traditional songs keep
+                memory of history, customs and moral lessons.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Textiles & Handicrafts</h4>
+              <p class="muted">
+                Embroidery (often geometric and floral), rugs, camel trappings
+                and silver jewelry are prominent crafts. Patterns vary by tribe
+                and are important markers of identity.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Food & Hospitality</h4>
+              <p class="muted">
+                Cuisine emphasizes simple, hearty dishes: flatbreads, rice,
+                stews and grilled meats — often accompanied by dried fruits,
+                dairy and strong hospitality traditions for guests.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Social life & customs</h4>
+              <p class="muted">
+                Clan and tribal ties are significant. Many customs are governed
+                by local traditions and strong community expectations about
+                hospitality, honor and family roles.
+              </p>
+            </div>
+
+            <div class="card">
+              <h4>Festivals</h4>
+              <p class="muted">
+                Religious festivals (Eid) are widely observed; there are also
+                local celebrations connected to seasons, harvests and weddings
+                with distinctive music and dance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="gallery" style="margin-top: 1.25rem">
+          <div class="section-title"><h3>Photo gallery</h3></div>
+          <div class="gallery" aria-live="polite" style="margin-top: 0.75rem">
+            <img
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&q=60&auto=format&fit=crop"
+              alt="Desert landscape"
+              loading="lazy"
+              onclick="openModal(this.src, this.alt)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=60&auto=format&fit=crop"
+              alt="Traditional weaving"
+              loading="lazy"
+              onclick="openModal(this.src, this.alt)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=60&auto=format&fit=crop"
+              alt="Coastal scene"
+              loading="lazy"
+              onclick="openModal(this.src, this.alt)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1516594798949-6a7bb5e3d6f6?w=1200&q=60&auto=format&fit=crop"
+              alt="Traditional embroidery"
+              loading="lazy"
+              onclick="openModal(this.src, this.alt)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=60&auto=format&fit=crop"
+              alt="Markets and trade"
+              loading="lazy"
+              onclick="openModal(this.src, this.alt)"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?w=1200&q=60&auto=format&fit=crop"
+              alt="Local musicians"
+              loading="lazy"
+              onclick="openModal(this.src, this.alt)"
+            />
+          </div>
+        </section>
+
+        <section id="resources" style="margin-top: 1.25rem">
+          <div class="card">
+            <div class="section-title">
+              <h3>Further reading & resources</h3>
+            </div>
+            <p class="muted" style="margin-top: 0.5rem">
+              For academic or in-depth reading, look for ethnographies, local
+              historical accounts and reputable article collections. When using
+              online sources, prioritize material authored by scholars or
+              community organizations, or primary sources such as oral histories
+              and documented interviews.
+            </p>
+
+            <ul class="muted" style="margin-top: 0.5rem">
+              <li>Local museums and regional research centers</li>
+              <li>Academic journals on South & Central Asian studies</li>
+              <li>
+                Community-led cultural organizations and oral history projects
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="contact" style="margin-top: 1.25rem">
+          <div class="card">
+            <div class="section-title"><h3>Contact / Contribute</h3></div>
+            <p class="muted" style="margin-top: 0.5rem">
+              If you represent a community group, have photographs, or would
+              like to suggest corrections, please reach out.
+            </p>
+
+            <form
+              onsubmit="event.preventDefault();alert('Thanks! This demo form does not send data — replace with your backend or mailto link.');"
+              aria-label="Contact form"
+              style="
+                margin-top: 0.75rem;
+                display: grid;
+                gap: 0.6rem;
+                max-width: 540px;
+              "
+            >
+              <input
+                aria-label="Name"
+                placeholder="Your name"
+                style="
+                  padding: 10px;
+                  border-radius: 8px;
+                  border: 1px solid #eee;
+                "
+              />
+              <input
+                aria-label="Email"
+                placeholder="Email"
+                style="
+                  padding: 10px;
+                  border-radius: 8px;
+                  border: 1px solid #eee;
+                "
+              />
+              <textarea
+                aria-label="Message"
+                placeholder="Message or contribution"
+                rows="4"
+                style="
+                  padding: 10px;
+                  border-radius: 8px;
+                  border: 1px solid #eee;
+                "
+              ></textarea>
+              <div style="display: flex; gap: 0.5rem">
+                <button type="submit" class="cta">Send</button>
+                <a
+                  href="#top"
+                  class="card"
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  >Back to top</a
+                >
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+          "
+        >
+          <div class="muted">
+            © <span id="year"></span> Baluchistan — Baluch Culture. This site is
+            for educational purposes.
+          </div>
+          <div class="muted">
+            Designed with respect for Baluch communities. Credit local voices
+            when sharing.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Image modal -->
+    <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image preview"
+      onclick="closeModal()"
+    >
+      <img id="modalImg" src="" alt="" />
+    </div>
+
+    <script>
+      // simple JS for year, modal, and keyboard accessibility
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      function openModal(src, alt) {
+        const m = document.getElementById("modal");
+        const img = document.getElementById("modalImg");
+        img.src = src;
+        img.alt = alt || "Image preview";
+        m.classList.add("open");
+        // trap keyboard focus is intentionally minimal for this demo
+      }
+      function closeModal() {
+        const m = document.getElementById("modal");
+        m.classList.remove("open");
+        document.getElementById("modalImg").src = "";
+      }
+      // close modal on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
+  </body>
+</html>
